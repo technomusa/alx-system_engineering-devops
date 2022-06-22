@@ -1,3 +1,2 @@
-#!/bin/bashs
+#!/bin/bash
 echo "ls"
-
