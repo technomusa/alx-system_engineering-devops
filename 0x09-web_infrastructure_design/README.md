@@ -1,33 +1,37 @@
-## Web infrastructure design
-
-## Learning Objectives
-
-- Network basics
-- Server
-- Web server
-- DNS
-- Load balancer
-- Monitoring
-- What is a database
-- What’s the difference between a web server and an app server?
-- DNS record types
-- Single point of failure
-- How to avoid downtime when deploying new code
-- High availability cluster (active-active/active-passive)
-- What is HTTPS
-- What is a firewall
-- You must be able to draw a diagram covering the web stack you built with the sysadmin/devops track projects
-- You must be able to explain what each component is doing
-- You must be able to explain system redundancy
-- Know all the mentioned acronyms: LAMP, SPOF, QPS
-
-# Requirements
-
-- For the following tasks, insert the link form of your screenshot into the answer file
-- After pushing your answer file to Github, insert the Github file link into the URL box
-- You will also have to whiteboard each task in front of a mentor, staff or student - no computer or notes will be allowed during the whiteboarding session
-- Focus on what you are being asked:
-- Cover what the requirements mention, we will explore details in a later project
-- Keep in mind that you will have 30 minutes to perform the exercise, you will get points for what is asked in requirements
-- Similarly in a job interview, you should answer what the interviewer asked for, be careful about being too verbose - always ask the interviewer if going into details is necessary - speaking too much can play against you
-- In this project, again, avoid going in details if not asked
+# 0x09. Web infrastructure design
+At the end of this project you are expected to be able to explain, without the help of Google:
+* You must be able to draw a diagram covering the web stack you built with the sysadmin/devops track projects
+* You must be able to explain what each component is doing
+* You must be able to explain system redundancy
+* Know all the mentioned acronyms: LAMP, SPOF, QPS
+## File Descriptions
+Each file contains a link to an image hosted on Imgur. These images are based on the following requirements: <br />
+### [0-simple_web_stack](0-simple_web_stack)
+On a whiteboard, design a one server web infrastructure that hosts the website that is reachable via `www.foobar.com.` Start your explanation by having a user wanting to access your website. <br />
+You must use:
+* 1 physical server
+* 1 web server (Nginx)
+* 1 application server
+* 1 application files (your code base)
+* 1 database (MySQL)
+* 1 domain name `foobar.com` configured with a `www` record that points to your server IP `8.8.8.8`
+### [1-distributed_web_infrastructure](1-distributed_web_infrastructure)
+On a whiteboard, design a three servers web infrastructure that host the website `www.foobar.com`. <br />
+You must add to [0-simple_web_stack](0-simple_web_stack):
+* 2 physical servers
+* 1 web server (Nginx)
+* 1 application server
+* 1 load-balancer (HAproxy)
+* 1 application files (your code base)
+* 1 database (MySQL)
+### [2-secured_and_monitored_web_infrastructure](2-secured_and_monitored_web_infrastructure)
+On a whiteboard, design a three servers web infrastructure that host the website `www.foobar.com`, it must be secured, serve encrypted traffic and be monitored. <br />
+You must add to [1-distributed_web_infrastructure](1-distributed_web_infrastructure):
+* 3 firewalls
+* 1 SSL certificate to serve `www.foobar.com` over HTTPS
+* 3 monitoring clients (data collector for Sumologic or other monitoring services)
+### [3-scale_up](3-scale_up)
+You must add to [2-secured_and_monitored_web_infrastructure](2-secured_and_monitored_web_infrastructure):
+* 1 physical server
+* 1 load-balancer (HAproxy) configured as cluster with the other one
+* Split components (web server, application server, database) with their own server
